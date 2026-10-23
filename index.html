@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AFarms</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Afarms</h1>
+        <p>Information for Farmers</p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#crops">Crops</a>
+        <a href="#tips">Tips</a>
+        <a href="#register">Register</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="home">
+        <h2>Welcome to AFarms</h2>
+        <p>Learn about farming and how to grow healthy crops.</p>
+        <img src="images/farm.jpg" alt="A green farm">
+    </section>
+
+    <section id="about">
+        <h2>About Farming</h2>
+        <p>Farming is the growing of crops and raising of animals
+        to provide food for people.</p>
+    </section>
+
+    <section id="crops">
+        <h2>Common Crops</h2>
+
+        <h3>Maize</h3>
+        <p>Maize is used for food and animal feed.</p>
+
+        <h3>Rice</h3>
+        <p>Rice is an important food crop in Nigeria.</p>
+
+        <h3>Yam</h3>
+        <p>Yam is a popular food in Nigeria.</p>
+    </section>
+
+    <section id="tips">
+        <h2>Farming Tips</h2>
+        <p>1. Use good seeds.</p>
+        <p>2. Water your crops.</p>
+        <p>3. Remove weeds.</p>
+        <p>4. Protect your crops from pests.</p>
+
+        <button onclick="showTip()">Get a Farming Tip</button>
+        <p id="tip"></p>
+    </section>
+
+    <section id="register">
+        <h2>Farmer Registration Form</h2>
+        <p>Fill in your information below.</p>
+
+        <form onsubmit="registerFarmer(event)">
+
+            <label>Full Name:</label>
+            <input type="text" id="name" required>
+
+            <label>Address:</label>
+            <input type="text" id="address" required>
+
+            <label>Sex:</label>
+            <select id="sex" required>
+                <option value="">Select Sex</option>
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+
+            <label>Farm Size:</label>
+            <input type="text" id="size" placeholder="e.g. 2 hectares" required>
+
+            <label>Crop Type:</label>
+            <select id="crop" required>
+                <option value="">Select Crop</option>
+                <option>Maize</option>
+                <option>Rice</option>
+                <option>Yam</option>
+                <option>Beans</option>
+                <option>Groundnut</option>
+                <option>Other</option>
+            </select>
+
+            <label>Farm Location:</label>
+            <input type="text" id="location" placeholder="e.g. Biu, Borno State" required>
+
+            <button type="submit">Register Farmer</button>
+
+        </form>
+
+        <p id="message"></p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: klassiqagape09@gmail.com</p>
+        <p>Location: Yola, Nigeria</p>
+    </section>
+
+    <footer>
+        <p>Afarms &copy; 2026</p>
+    </footer>
+
+    <script>
+        function showTip() {
+            document.getElementById("tip").innerHTML =
+            "Water your crops regularly to help them grow.";
+        }
+
+        function registerFarmer(event) {
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+
+            document.getElementById("message").innerHTML =
+            "Thank you, " + name + "! Your registration was received.";
+
+            document.getElementById("register").style.color = "green";
+        }
+    </script>
+
+</body>
+</html>
+
