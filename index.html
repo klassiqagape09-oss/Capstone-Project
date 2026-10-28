@@ -1,132 +1,398 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AFarms</title>
+    <title>AFarms - Farming Information</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <h1>Afarms</h1>
-        <p>Information for Farmers</p>
+        <h1>AFarms</h1>
+        <p>Farming Information, Crop Diseases and Weather Forecast</p>
     </header>
 
     <nav>
         <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#crops">Crops</a>
-        <a href="#tips">Tips</a>
+        <a href="#guides">Farming Guides</a>
+        <a href="#diseases">Crop Diseases</a>
+        <a href="#report">Report Problem</a>
+        <a href="#weather">Rain Forecast</a>
         <a href="#register">Register</a>
         <a href="#contact">Contact</a>
     </nav>
 
     <section id="home">
         <h2>Welcome to AFarms</h2>
-        <p>Learn about farming and how to grow healthy crops.</p>
-        <img src="images/farm.jpg" alt="A green farm">
+
+        <p>Helping Nigerian farmers access useful farming information,
+        report crop problems and prepare for changing weather conditions.</p>
+
+        <img src="images/farm.jpg" alt="Green farmland">
+
+        <h3>Our Mission</h3>
+
+        <p>To help farmers make better farming decisions by providing
+        agricultural information, crop disease awareness and rainfall
+        forecasts.</p>
     </section>
 
-    <section id="about">
-        <h2>About Farming</h2>
-        <p>Farming is the growing of crops and raising of animals
-        to provide food for people.</p>
+    <section id="guides">
+        <h2>Farming Guides</h2>
+
+        <h3>Land Preparation</h3>
+        <p>Prepare your soil properly before planting.</p>
+
+        <h3>Seed Selection</h3>
+        <p>Choose healthy seeds suitable for your location and season.</p>
+
+        <h3>Water Management</h3>
+        <p>Provide crops with sufficient water based on their needs
+        and the weather conditions.</p>
+
+        <h3>Weed Control</h3>
+        <p>Inspect your farm regularly and remove weeds that compete
+        with crops for nutrients and water.</p>
+
+        <h3>Soil Fertility</h3>
+        <p>Use suitable manure or fertilizer based on your soil
+        conditions and crop requirements.</p>
     </section>
 
-    <section id="crops">
-        <h2>Common Crops</h2>
+    <section id="diseases">
+        <h2>Common Crop Problems</h2>
 
-        <h3>Maize</h3>
-        <p>Maize is used for food and animal feed.</p>
+        <h3>Maize Fall Armyworm</h3>
+        <p>Signs include holes in leaves and damage to the central
+        whorl of maize plants.</p>
 
-        <h3>Rice</h3>
-        <p>Rice is an important food crop in Nigeria.</p>
+        <h3>Cassava Mosaic Disease</h3>
+        <p>Signs include yellow and green patches on leaves,
+        leaf distortion and stunted growth.</p>
 
-        <h3>Yam</h3>
-        <p>Yam is a popular food in Nigeria.</p>
+        <h3>Rice Blast</h3>
+        <p>Signs include spindle-shaped spots on leaves with
+        grey centres and dark edges.</p>
+
+        <h3>Tomato Diseases</h3>
+        <p>Watch for unusual leaf spots, yellowing, wilting and
+        rotting fruits.</p>
+
+        <p><strong>Note:</strong> These symptoms can have different
+        causes. Consult an agricultural extension officer for
+        proper diagnosis and treatment recommendations.</p>
     </section>
 
-    <section id="tips">
-        <h2>Farming Tips</h2>
-        <p>1. Use good seeds.</p>
-        <p>2. Water your crops.</p>
-        <p>3. Remove weeds.</p>
-        <p>4. Protect your crops from pests.</p>
+    <section id="report">
+        <h2>Report a Farming Problem</h2>
 
-        <button onclick="showTip()">Get a Farming Tip</button>
-        <p id="tip"></p>
+        <p>Are your crops showing unusual signs? Describe the problem
+        and upload a picture to help document what is happening on
+        your farm.</p>
+
+        <form id="problemForm">
+
+            <label for="farmerName">Farmer's Name:</label>
+            <input type="text" id="farmerName" required>
+
+            <label for="problemLocation">Farm Location:</label>
+            <input type="text" id="problemLocation"
+            placeholder="e.g. Biu, Borno State" required>
+
+            <label for="problemCrop">Affected Crop:</label>
+            <select id="problemCrop" required>
+                <option value="">Select Crop</option>
+                <option>Maize</option>
+                <option>Rice</option>
+                <option>Cassava</option>
+                <option>Yam</option>
+                <option>Beans</option>
+                <option>Groundnut</option>
+                <option>Tomato</option>
+                <option>Other</option>
+            </select>
+
+            <label for="problemType">Type of Problem:</label>
+            <select id="problemType" required>
+                <option value="">Select Problem</option>
+                <option>Crop Disease</option>
+                <option>Insect or Pest Attack</option>
+                <option>Yellowing Leaves</option>
+                <option>Wilting Plants</option>
+                <option>Poor Crop Growth</option>
+                <option>Weather Problem</option>
+                <option>Other</option>
+            </select>
+
+            <label for="problemDescription">Describe the Problem:</label>
+            <textarea id="problemDescription" rows="5"
+            placeholder="Explain what is happening to your crops..."
+            required></textarea>
+
+            <label for="problemImage">Upload a Picture of the Affected Crop:</label>
+            <input type="file" id="problemImage" accept="image/*">
+
+            <img id="imagePreview" alt="Crop image preview"
+            style="display:none;">
+
+            <button type="submit">Submit Farming Problem</button>
+
+        </form>
+
+        <p id="problemMessage" aria-live="polite"></p>
+    </section>
+
+    <section id="weather">
+        <h2>Rainfall and Weather Forecast</h2>
+
+        <p>Enter your town or village to check the predicted
+        rainfall for the next seven days.</p>
+
+        <form id="weatherForm">
+
+            <label for="weatherLocation">Enter Your Location:</label>
+            <input type="text" id="weatherLocation"
+            placeholder="e.g. Yola, Adamawa State" required>
+
+            <button type="submit">Check Rain Forecast</button>
+
+        </form>
+
+        <p id="weatherMessage" aria-live="polite"></p>
+
+        <div id="weatherResults"></div>
+
+        <p>Weather forecasts are estimates and may change.
+        Check updated forecasts before making important farming
+        decisions.</p>
+
+        <p>Weather data provided by
+        <a href="https://open-meteo.com/" target="_blank"
+        rel="noopener noreferrer">Open-Meteo</a>.</p>
     </section>
 
     <section id="register">
         <h2>Farmer Registration Form</h2>
+
         <p>Fill in your information below.</p>
 
-        <form onsubmit="registerFarmer(event)">
+        <form id="registrationForm">
 
-            <label>Full Name:</label>
+            <label for="name">Full Name:</label>
             <input type="text" id="name" required>
 
-            <label>Address:</label>
+            <label for="address">Address:</label>
             <input type="text" id="address" required>
 
-            <label>Sex:</label>
+            <label for="sex">Sex:</label>
             <select id="sex" required>
                 <option value="">Select Sex</option>
                 <option>Male</option>
                 <option>Female</option>
             </select>
 
-            <label>Farm Size:</label>
-            <input type="text" id="size" placeholder="e.g. 2 hectares" required>
+            <label for="size">Farm Size:</label>
+            <input type="text" id="size"
+            placeholder="e.g. 2 hectares" required>
 
-            <label>Crop Type:</label>
+            <label for="crop">Crop Type:</label>
             <select id="crop" required>
                 <option value="">Select Crop</option>
                 <option>Maize</option>
                 <option>Rice</option>
                 <option>Yam</option>
+                <option>Cassava</option>
                 <option>Beans</option>
                 <option>Groundnut</option>
                 <option>Other</option>
             </select>
 
-            <label>Farm Location:</label>
-            <input type="text" id="location" placeholder="e.g. Biu, Borno State" required>
+            <label for="location">Farm Location:</label>
+            <input type="text" id="location"
+            placeholder="e.g. Biu, Borno State" required>
 
             <button type="submit">Register Farmer</button>
 
         </form>
 
-        <p id="message"></p>
+        <p id="message" aria-live="polite"></p>
     </section>
 
     <section id="contact">
         <h2>Contact Us</h2>
+
         <p>Email: klassiqagape09@gmail.com</p>
         <p>Location: Yola, Nigeria</p>
     </section>
 
     <footer>
-        <p>Afarms &copy; 2026</p>
+        <p>AFarms &copy; 2026</p>
+        <p>Better Information, Healthier Crops.</p>
     </footer>
 
     <script>
-        function showTip() {
-            document.getElementById("tip").innerHTML =
-            "Water your crops regularly to help them grow.";
-        }
+        const problemForm = document.getElementById("problemForm");
+        const problemImage = document.getElementById("problemImage");
+        const imagePreview = document.getElementById("imagePreview");
 
-        function registerFarmer(event) {
+        problemImage.addEventListener("change", function() {
+            const file = this.files[0];
+
+            imagePreview.style.display = "none";
+
+            if (!file) {
+                return;
+            }
+
+            if (!file.type.startsWith("image/")) {
+                document.getElementById("problemMessage").textContent =
+                "Please select a valid image.";
+
+                this.value = "";
+                return;
+            }
+
+            imagePreview.src = URL.createObjectURL(file);
+            imagePreview.style.display = "block";
+        });
+
+        problemForm.addEventListener("submit", function(event) {
             event.preventDefault();
 
-            let name = document.getElementById("name").value;
+            const farmer = document.getElementById("farmerName").value;
+            const crop = document.getElementById("problemCrop").value;
+            const problem = document.getElementById("problemType").value;
 
-            document.getElementById("message").innerHTML =
-            "Thank you, " + name + "! Your registration was received.";
+            document.getElementById("problemMessage").textContent =
+            "Thank you, " + farmer + ". Your " + crop +
+            " problem (" + problem + ") has been recorded in this demo. " +
+            "It has not been sent to an agricultural expert.";
 
-            document.getElementById("register").style.color = "green";
-        }
+            problemForm.reset();
+            imagePreview.style.display = "none";
+            imagePreview.removeAttribute("src");
+        });
+
+        document.getElementById("registrationForm")
+        .addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+
+            document.getElementById("message").textContent =
+            "Thank you, " + name +
+            "! Your registration was received in this demo.";
+        });
+
+        document.getElementById("weatherForm")
+        .addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const location =
+            document.getElementById("weatherLocation").value.trim();
+
+            const weatherMessage =
+            document.getElementById("weatherMessage");
+
+            const weatherResults =
+            document.getElementById("weatherResults");
+
+            weatherMessage.textContent = "Loading weather forecast...";
+            weatherResults.replaceChildren();
+
+            try {
+                const searchUrl =
+                "https://geocoding-api.open-meteo.com/v1/search?name=" +
+                encodeURIComponent(location) +
+                "&count=1&countryCode=NG&language=en&format=json";
+
+                const searchResponse = await fetch(searchUrl);
+
+                if (!searchResponse.ok) {
+                    throw new Error("Could not search for this location.");
+                }
+
+                const searchData = await searchResponse.json();
+
+                if (!searchData.results || searchData.results.length === 0) {
+                    throw new Error(
+                        "Location not found. Enter a town or city in Nigeria."
+                    );
+                }
+
+                const place = searchData.results[0];
+
+                const forecastUrl =
+                "https://api.open-meteo.com/v1/forecast?latitude=" +
+                place.latitude +
+                "&longitude=" + place.longitude +
+                "&daily=precipitation_probability_max,precipitation_sum,temperature_2m_max,temperature_2m_min" +
+                "&forecast_days=7&timezone=auto";
+
+                const forecastResponse = await fetch(forecastUrl);
+
+                if (!forecastResponse.ok) {
+                    throw new Error("Could not retrieve the weather forecast.");
+                }
+
+                const data = await forecastResponse.json();
+
+                weatherMessage.textContent =
+                "Seven-day forecast for " + place.name +
+                (place.admin1 ? ", " + place.admin1 : "") + ", Nigeria";
+
+                const heading = document.createElement("h3");
+                heading.textContent = "Expected Rainfall";
+                weatherResults.appendChild(heading);
+
+                for (let i = 0; i < data.daily.time.length; i++) {
+                    const day = document.createElement("div");
+                    day.className = "forecast-day";
+
+                    const dateParts = data.daily.time[i].split("-");
+                    const date = new Date(
+                        Number(dateParts[0]),
+                        Number(dateParts[1]) - 1,
+                        Number(dateParts[2])
+                    );
+
+                    const dayName = date.toLocaleDateString("en-GB", {
+                        weekday: "long",
+                        day: "numeric",
+                        month: "short"
+                    });
+
+                    const rainChance =
+                    data.daily.precipitation_probability_max[i];
+
+                    const rainfall = data.daily.precipitation_sum[i];
+
+                    const maxTemp = data.daily.temperature_2m_max[i];
+                    const minTemp = data.daily.temperature_2m_min[i];
+
+                    const rainText = rainChance == null
+                    ? "Probability unavailable"
+                    : "Chance of rain: " + rainChance + "%";
+
+                    const amountText = rainfall == null
+                    ? "Rainfall amount unavailable"
+                    : "Expected rainfall: " + rainfall + " mm";
+
+                    day.textContent = dayName + " | " + rainText +
+                    " | " + amountText +
+                    " | Temperature: " + minTemp + "°C to " +
+                    maxTemp + "°C";
+
+                    weatherResults.appendChild(day);
+                }
+
+            } catch (error) {
+                weatherMessage.textContent =
+                error.message ||
+                "Unable to load the forecast. Please check your internet connection.";
+
+            }
+        });
     </script>
 
 </body>
 </html>
-
